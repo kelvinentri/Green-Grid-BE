@@ -12,16 +12,17 @@ const schema=mongoose.Schema({
         type:Number,
         required:true
     },
-    bookedby:{
+bookedBy:{
        type: mongoose.Types.ObjectId,
        ref:'users'
     },
-    cancellation:{
-        type:Array,
-    },
     courtId:{
         type:mongoose.Types.ObjectId,
-        required:true}
+        required:true},
+        orderId:{
+            type: mongoose.Types.ObjectId,
+            ref:'orders'
+         },
 })
 const courtSchedules=mongoose.model('courtSchedules',schema)
 schema.index({date:1,'slot.id':1,courtId:1},{unique:true})
