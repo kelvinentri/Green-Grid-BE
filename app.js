@@ -15,7 +15,6 @@ const paymentRouter = require('./routes/payments');
 const authRouter = require('./routes/auth');
 const app = express();
 connectDB()
-console.log(process.env.SALT_ROUNDS)
 app.use(cors({
   origin:['http://localhost:3000',]
 }))

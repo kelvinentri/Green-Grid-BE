@@ -42,8 +42,10 @@ const createnewcourt = (req, res) => {
 const createCourtshedules = (req, res) => {
   try {
     const { startDate, endDate, cost, selectedSlots, courtId } = req.body;
+
     let currentDate = new Date(new Date(startDate).setUTCHours(0, 0, 0, 0));
     let lastDate = new Date(new Date(endDate).setUTCHours(0, 0, 0, 0));
+    
     const slotObjects = [];
     console.log(currentDate);
     while (currentDate <= lastDate) {
@@ -67,6 +69,7 @@ const createCourtshedules = (req, res) => {
         res.status(200).json({message:'court shedules added successfully'})
     })
     .catch((err)=>{
+      console.log(err.code);
         if(err.code===11000){
             res.status(500).json({message:` already sheduled , duplication`})
         }else{
